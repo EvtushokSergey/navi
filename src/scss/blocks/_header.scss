@@ -1,0 +1,130 @@
+.header {
+    padding: 20px 0;
+    font-size: 20px;
+    position: relative;
+
+    &.active {
+        .nav {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .burger-btn {
+            &:before {
+                transform: rotate(45deg);
+                top: 13px;
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+                bottom: 13px;
+            }
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.nav {
+    @include media('<tablet'){
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+        right: 0;
+        transition: all ease-in-out 0.3s;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include media('<tablet') {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        position: relative;
+        padding: 0 10px;
+
+        @include media('<tablet') {
+            padding-bottom: 20px;
+        }
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: black;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+            border-top: 2px solid red;                    }
+    }
+}
+
+.burger-btn {
+    display: none;
+    
+    @include media('<tablet') {
+        display: block;
+        position: relative;
+        z-index: 2;
+        width: 50px;
+        height: 30px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 3px;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            border-radius: 100px;   
+            transition: all ease-in-out 0.3s;        
+        }
+        
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            left: 0;
+            width: 100%;     
+            background-color: black;             
+            border-radius: 100px;   
+            transition: all ease-in-out 0.3s;     
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            transform: translateY(-50%);
+            background-color: black;          
+            border-radius: 100px;
+            transition: all ease-in-out 0.3s;   
+        }
+
+    }
+}
